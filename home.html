@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <i class="fas fa-bug"></i> Chatbot <i class="fas fa-bug"></i>
+      </div>
+    </header>
+
+    <main class="msger-chat">
+      <div class="msg left-msg">
+        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">Bot</div>
+            <div class="msg-info-time">12:45</div>
+          </div>
+
+          <div class="msg-text">
+            <p>Hi, welcome to Shantiniketan Women's College! May I know what are you looking for? 😄</p>
+            <br> <br>
+              <label>Admission</label>
+<input type="radio" id="admsr" name = "primary" onclick="primary('admsdiv', 'admsr')">
+<label>General Information</label>
+<input type="radio" id="infor" name = "primary" onclick="primary('infodiv', 'infor')">
+<label for="demo">Academics</label>
+<input type="radio" id="academicsr" name = "primary" onclick="primary('academicsdiv', 'academicsr')">
+<label>Faculty</label>
+<input type="radio" id="facultyr" name = "primary" onclick="primary('facultydiv', 'facultyr')">
+</div>
+
+<div id="infodiv" style="display:none;">
+<p><label>College Address</label>
+<input type="radio" id="infor0" name = "info" onclick="info('clgaddr', 'infor0')"></p>
+<pre id = "clgaddr" style="display: none;"> Shantiniketan Address :  1st Floor, Nina Towers, Erragadda Main Rd, Opp Telephone Exchange,
+  Vikaspuri, Erragadda, Hyderabad, Telangana 500018
+  </pre>
+<p>Contact Information</p>
+<input type="radio" id="infor1" name = "info" onclick="info('contactinfo', 'infor1')"></p>
+<pre id = "contactinfo" style="display: none;">Email Id : shantiniketancolleges@gmail.com
+Contact Number : +91 964 040 6778 </pre>
+<p><label>Website</label>
+<input type="radio" id="infor2" name = "info" onclick="info('web', 'infor2')"></p>
+<a href = "http://shantiniketancollege.com/" id = "web" style="display: none;">Click here</a>
+</div>
+
+<div id="admsdiv" style="display:none;">
+<p><label>Download Brochure</label>
+<input type="radio" id="admsr0" name = "adms" onclick="admission('brochure', 'admsr0')"></p>
+<a href = "#" id = "brochure" style="display: none;">Click here to download brochure</a>
+<label>Application Form</label>
+<input type="radio" id="admsr1" name = "adms" onclick="admission('appform', 'admsr1')"></p>
+<a href = "#" id = "appform" style="display: none;">Click here to download Application form</a>
+<label>More Information</label>
+<input type="radio" id="admsr2" name = "adms" onclick="admission('moreinfo', 'admsr2')"></p>
+<a href = "#" id = "moreinfo" style="display: none;">Click here to go to college website</a>
+</div>
+
+<div id="academicsdiv" style="display:none;">
+<p><label>UG</label>
+<input type="radio" id="academicsr0" name = "courses" onclick="academics('ugdiv', 'academicsr0')"></p>
+<p id="academics1"><label for="academics1">PG</label>
+<input type="radio" id="academicsr1" name = "courses" onclick="academics('pgdiv', 'academicsr1')"></p>
+</div>
+
+<div id="ugdiv" style="display:none;">
+<p><label>B.Sc</label>
+<input type="radio" id="ugr0" name = "ug" onclick="undergrad('b.sc', 'ugr0')"></p>
+<p id="b.sc" style="display: none;"> It is a full time online graduation(3 year) course. it has 6 braches: Maths, Physics and Computer Science, Maths Electronics and Computer Science, Maths Statistics and Computer Science, Math, Physics and Chemistry, Computer Science and Bio-Technology, Microbiology, Chemistry.</p>
+<p><label>B.Com</label>
+<input type="radio" id="ugr1" name = "ug" onclick="undergrad('b.com', 'ugr1')"></p>
+<p id = "b.com" style="display: none;"> It is a full time online graduation(3 year) course. it has 2 braches: Computer Science and General.</p>
+</div>
+
+<div id="pgdiv" style="display:none;">
+<p><label>M.Sc</label>
+<input type="radio" id="pgr0" name = "pg" onclick="postgrad('m.sc', 'pgr0')"></p>
+<p id="m.sc" style="display: none;"> It is a full time online post graduation(2 year) course. It has 2 braches: Computer Science and General.</p>
+<p><label>M.Com</label>
+<input type="radio" id="pgr1" name = "pg" onclick="postgrad('m.com', 'pgr1')"></p>
+<p id="m.com" style="display: none;">  It is a full time online post graduation(2 year) course.</p>
+</div>
+
+
+<div id="facultydiv" style = "display:none;">
+<label>B.Sc</label>
+<input type="radio" id="facultyr0" name = "faculty" onclick="faculty('bsc', 'facultyr0')"></p>
+<a href = "#" id = "bsc" style="display: none;"> B. Sc faculty details </a>
+<label>B. Com</label>
+<input type="radio" id="facultyr1" name = "faculty" onclick="faculty('bcom', 'facultyr1')"></p>
+<a href = "#" id = "bcom" style="display: none;"> B. Com faculty details </a>
+<label>M. Sc</label>
+<input type="radio" id="facultyr2" name = "faculty" onclick="faculty('msc', 'facultyr2')"></p>
+<a href = "#" id = "msc" style="display: none;"> M. Sc faculty details </a>
+<label>M. Com</label>
+<input type="radio" id="facultyr3" name = "faculty" onclick="faculty('mcom', 'facultyr3')"></p>
+<a href = "#" id = "mcom" style="display: none;"> M. Com faculty details </a>
+</div>
+
+
+<script>
+
+var master = ["academicsdiv", "infodiv", "admsdiv", "facultydiv", "ugdiv", "pgdiv"];
+function primary(name, radio) {
+  var arr = ["academicsdiv", "infodiv", "admsdiv", "facultydiv"];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+    var text = document.getElementById(name);
+    var rad = document.getElementById(radio);
+    if(rad.checked == true){
+     text.style.display = "block";
+     //alter.style.display = "none";
+     for(var i=0;i<arr.length;i++)
+     {
+      if(arr[i] != name)
+      {
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+      }
+     }
+    }
+}
+
+function academics(name, radio) {
+  var arr = ['ugdiv', 'pgdiv'];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+  var x = document.getElementById('academicsdiv');
+  x.style.display = 'block';
+    var text = document.getElementById(name);
+    var rad = document.getElementById(radio);
+    if(rad.checked == true){
+     text.style.display = "block";
+     //alter.style.display = "none";
+     for(var i=0;i<arr.length;i++)
+     {
+      if(arr[i] != name)
+      {
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+      }
+     }
+  }
+
+}
+
+function info(name, radio)
+{
+  var arr = ["clgaddr", "contactinfo", "web"];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+  var x = document.getElementById('infodiv');
+  x.style.display = "block";
+  var text = document.getElementById(name);
+  var rad = document.getElementById(radio);
+  if(rad.checked == true)
+  {
+    text.style.display = "block";
+    for(var i=0;i<arr.length;i++)
+    {
+      if(arr[i] != name){
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+      }
+    }
+  }
+}
+
+function admission(name, radio)
+{
+  var arr = ["brochure", "appform", "moreinfo"];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+  var x = document.getElementById('admsdiv');
+  x.style.display = 'block';
+  var text = document.getElementById(name);
+  var rad = document.getElementById(radio);
+  if(rad.checked == true)
+  {
+    text.style.display = "block";
+    for(var i=0;i<arr.length;i++)
+    {
+      if(arr[i] != name){
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+      }
+    }
+  }
+}
+
+function faculty(name, radio)
+{
+  var arr = ["bsc", "bcom", "msc", "mcom"];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+  var x = document.getElementById('facultydiv');
+  x.style.display = 'block';
+  var text = document.getElementById(name);
+  var rad = document.getElementById(radio);
+  if(rad.checked == true)
+  {
+    text.style.display = "block";
+    for(var i=0;i<arr.length;i++)
+    {
+      if(arr[i] != name){
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+      }
+    }
+  }
+}
+
+
+function undergrad(name, radio)
+{
+  var arr = ["b.sc", "b.com"];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+  var x = document.getElementById('ugdiv');
+  x.style.display = 'block';
+  var text = document.getElementById(name);
+  var rad = document.getElementById(radio);
+  if(rad.checked == true)
+  {
+    text.style.display = "block";
+    for(var i=0;i<arr.length;i++)
+    {
+      if(arr[i] != name)
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+    }
+  }
+}
+
+function postgrad(name, radio)
+{
+  var arr = ["m.sc", "m.com"];
+  for(var i=0;i<master.length;i++)
+  {
+    if(master[i] in arr)
+      continue;
+
+    else
+    {
+      var x = document.getElementById(master[i]);
+      x.style.display = 'none';
+    }
+  }
+  var x = document.getElementById('pgdiv');
+  x.style.display = 'block';
+  var text = document.getElementById(name);
+  var rad = document.getElementById(radio);
+  if(rad.checked == true)
+  {
+    text.style.display = "block";
+    for(var i=0;i<arr.length;i++)
+    {
+      if(arr[i] != name)
+        var alter = document.getElementById(arr[i]);
+        alter.style.display = "none";
+    }
+  }
+}
+</script>
+              <p id="demo"></p>
+              <script src="myscript.js"></script>
+            <form>
+              <div class="msg-text">
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <form class="msger-inputarea">
+      <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+  </section>
+  <!-- partial -->
+  <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+  <script>
+
+    const msgerForm = get(".msger-inputarea");
+    const msgerInput = get(".msger-input");
+    const msgerChat = get(".msger-chat");
+
+
+    // Icons made by Freepik from www.flaticon.com
+    const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
+    const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+    const BOT_NAME = "                   Bot";
+    const PERSON_NAME = "You";
+
+    msgerForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const msgText = msgerInput.value;
+      if (!msgText) return;
+
+      appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+      msgerInput.value = "";
+      botResponse(msgText);
+    });
+
+    function appendMessage(name, img, side, text) {
+      //   Simple solution for small apps
+      const msgHTML = `
+<div class="msg ${side}-msg">
+  <div class="msg-img" style="background-image: url(${img})"></div>
+  <div class="msg-bubble">
+    <div class="msg-info">
+      <div class="msg-info-name">${name}</div>
+      <div class="msg-info-time">${formatDate(new Date())}</div>
+    </div>
+    <div class="msg-text">${text}</div>
+  </div>
+</div>
+`;
+
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    }
+
+    function botResponse(rawText) {
+
+      // Bot Response
+      $.get("/get", { msg: rawText }).done(function (data) {
+        console.log(rawText);
+        console.log(data);
+        const msgText = data;
+        appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+
+      });
+
+    }
+
+
+    // Utils
+    function get(selector, root = document) {
+      return root.querySelector(selector);
+    }
+
+    function formatDate(date) {
+      const h = "0" + date.getHours();
+      const m = "0" + date.getMinutes();
+
+      return `${h.slice(-2)}:${m.slice(-2)}`;
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>
